@@ -13,7 +13,14 @@ const compat = new FlatCompat({
 });
 
 export default [{
-    ignores: ["**/node_modules", "**/dist", "**/coverage", "**/test", "**/.eslintrc.cjs"],
+    ignores: [
+        "**/node_modules", 
+        "**/dist", 
+        "**/coverage", 
+        "**/test-core", 
+        "**/test-integration", 
+        "**/.eslintrc.cjs"
+    ],
 }, ...compat.extends(
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
@@ -21,7 +28,7 @@ export default [{
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
 ), {
     plugins: {
-        "@typescript-eslint": typescriptEslint,
+        "@typescript-eslint": typescriptEslint
     },
 
     languageOptions: {
@@ -38,6 +45,8 @@ export default [{
         "@typescript-eslint/indent": "off",
         "@typescript-eslint/no-explicit-any": "error",
         "@typescript-eslint/no-non-null-assertion": "error",
+        "@typescript-eslint/no-non-null-asserted-nullish-coalescing": "error",
+        "@typescript-eslint/no-non-null-asserted-optional-chain": "error",
         "@typescript-eslint/camelcase": "off",
         "@typescript-eslint/array-type": "warn",
         "@typescript-eslint/interface-name-prefix": "off",
@@ -60,6 +69,6 @@ export default [{
             allowAny: false,
             allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing: false,
         }],
-        "@typescript-eslint/no-unnecessary-condition": "error",
+        "@typescript-eslint/no-unnecessary-condition": "error"
     },
 }];

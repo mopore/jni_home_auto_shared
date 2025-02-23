@@ -1,6 +1,6 @@
 {
-  "name": "jni-home-automate-shared",
-  "version": "2.0.0",
+  "name": "jni_home_auto_shared",
+  "version": "2.1.0",
   "description": "Shared types and classes for JNI Home Automation.",
   "main": "App.ts",
   "type": "module",
@@ -9,7 +9,8 @@
     "url": "https://github.com/mopore/jni-home-automate-shared"
   },
   "scripts": {
-    "test": "LOG_SETUP=prod mocha dist/test/**/*.js --recursive --exit",
+    "test_core": "rm -rf ./dist && tsc -b && npx eslint . && LOG_SETUP=prod mocha dist/test-core/**/*.js --recursive --exit",
+    "test_all": "rm -rf ./dist && tsc -b && npx eslint . && LOG_SETUP=prod mocha dist/test-core/**/*.js --recursive --exit && LOG_SETUP=prod mocha --timeout 10000 dist/test-integration/**/*.js --recursive --exit",
     "build": "rm -rf ./dist && tsc -b && npx eslint ."
   },
   "keywords": [
@@ -19,14 +20,20 @@
   "author": "jni@mopore.org",
   "license": "ISC",
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.0",
+    "@eslint/js": "^9.21.0",
     "@types/chai": "^5.0.1",
+    "@types/chai-as-promised": "^8.0.1",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^22.10.5",
-    "@typescript-eslint/eslint-plugin": "^8.19.1",
-    "@typescript-eslint/parser": "^8.19.1",
-    "chai": "^5.1.2",
-    "eslint": "^9.18.0",
-    "mocha": "^11.0.1",
+    "@types/node": "^22.13.5",
+    "@typescript-eslint/eslint-plugin": "^8.24.1",
+    "@typescript-eslint/parser": "^8.24.1",
+    "chai": "^5.2.0",
+    "chai-as-promised": "^8.0.1",
+    "eslint": "^9.21.0",
+    "mocha": "^11.1.0",
+    "neo4j-driver": "^5.28.1",
+    "testcontainers": "^10.18.0",
     "typescript": "^5.7.3"
   },
   "dependencies": {

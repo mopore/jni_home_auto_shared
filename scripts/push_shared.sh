@@ -18,14 +18,13 @@ echo "Pushing shared types and classes to repos..."
 
 # Add addiontional Repos in the following array decleration if necessary
 repos=( \
-	"handle_home_events"\
-	"control_jni_home_telegram_bot"\
-	"monitor_jni_iphone"\
-	"monitor_jni_home_services"\
-	"control_halo"\
-	"control_aws_polly"\
-	"control_home_briefing"\
-	"jni_davinci_local_bridge"\
+	"jni_home_auto_control_halo"\
+	"jni_home_auto_control_home_events"\
+	"jni_home_auto_control_telegram_bot"\
+	"jni_home_auto_monitor_iphone"\
+	"jni_home_auto_monitor_services"\
+	"jni_home_auto_control_aws_polly"\
+	"jni_home_auto_control_briefing"\
 )
 
 for repo in "${repos[@]}" 

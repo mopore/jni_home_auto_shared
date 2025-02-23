@@ -1,20 +1,21 @@
 {
   "compilerOptions": {
-    "target": "es2022",
+    "target": "es2024",
     "module": "NodeNext",
-    "allowJs": true,
+    "allowJs": false,
     "sourceMap": true,
     "outDir": "dist",
     "strict": true,
     "strictBindCallApply":true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
     "moduleResolution": "NodeNext",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,  
     "skipLibCheck": true, // This should improve preformance.
     "noImplicitOverride": true,
-    "strictNullChecks": true
   },
   "include": [
-    "./src/**/*", "./test/**/*", 
+    "src/**/*", "test-core/**/*", "test-integration/**/*"
   ]
 }

@@ -57,6 +57,11 @@ Run the script in `./script/push_shared.sh`
 
 # Release History
 
+## v2.1.0 (Untagged)
+- Update libs for 2025
+- Update linting
+- Update testing
+
 ## v2.0.0
 - Rename "Hue Bridge" to "Halo" #48
 - Provice reset strategies for Alive ticker and Telegram MQTT messenger.
