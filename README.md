@@ -57,7 +57,7 @@ Run the script in `./script/push_shared.sh`
 
 # Release History
 
-## v2.1.0 (Untagged)
+## v2.1.0
 - Update libs for 2025
 - Update linting
 - Update testing
