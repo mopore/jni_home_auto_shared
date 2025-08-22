@@ -9,15 +9,17 @@ export enum LogSetup {
 }
 
 const colorizedDevFormat = winston.format.printf(({ level, message, timestamp }) => {
-  const greyTimestamp = `\x1b[90m${timestamp}\x1b[39m`; // ANSI escape code for grey color
-  return `${greyTimestamp} ${level}: ${message}`;
+	const greyTimestamp = `\x1b[90m${timestamp}\x1b[39m`;
+	return `${greyTimestamp} ${level}: ${message}`;
+});
+
+const plainFormat = winston.format.printf(({ level, message, timestamp }) => {
+	return `${timestamp} ${level}: ${message}`;
 });
 
 const loglevel = enums.to(LogSetup, parseEnvVariable(LOG_SETUP_NAME));
 
-
-export class ExtendedLogger{
-
+export class ExtendedLogger {
 	private readonly logger: winston.Logger;
 
 	constructor(options: winston.LoggerOptions) {
@@ -28,26 +30,26 @@ export class ExtendedLogger{
 		console.trace();
 	}
 
-	error(message: unknown): void {
-		this.logger.error(message);
+	error(message: unknown, ...optionalParams: unknown[]): void {
+		this.logger.error(typeof message === "string" ? message : String(message), optionalParams);
 	}
 
-	warn(message: unknown): void {
-		this.logger.warn(message);
+	warn(message: unknown, ...optionalParams: unknown[]): void {
+		this.logger.warn(typeof message === "string" ? message : String(message), optionalParams);
 	}
 
-	info(message: unknown): void {
-		this.logger.info(message);
+	info(message: unknown, ...optionalParams: unknown[]): void {
+		this.logger.info(typeof message === "string" ? message : String(message), optionalParams);
 	}
 
-	debug(message: unknown): void {
-		this.logger.debug(message);
+	debug(message: unknown, ...optionalParams: unknown[]): void {
+		this.logger.debug(typeof message === "string" ? message : String(message), optionalParams);
 	}
 }
 
 const createLogger = (options: winston.LoggerOptions): ExtendedLogger => {
 	return new ExtendedLogger(options);
-}
+};
 
 let internalLog: ExtendedLogger;
 
@@ -56,38 +58,44 @@ switch (loglevel) {
 		internalLog = createLogger({
 			level: "info",
 			format: winston.format.combine(
-				winston.format.timestamp({
-					format: "YYYY-MM-DD HH:mm:ss"
-				}),
-				winston.format.printf(info => `${info.timestamp} ${info.level}: ${info.message}`)
+				winston.format.timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
+				plainFormat
 			),
-			transports: [
-				new winston.transports.Console(),
-			],
+			transports: [new winston.transports.Console()],
 		});
 		break;
 	case LogSetup.DEVELOPMENT:
 		internalLog = createLogger({
 			level: "debug",
-			format: winston.format.combine(
-				winston.format.timestamp({
-					format: "YYYY-MM-DD HH:mm:ss"
-				}),
-				winston.format.colorize(),
-				colorizedDevFormat
-			),
 			transports: [
-				new winston.transports.Console(),
-				new winston.transports.File({ 
-					dirname: "logs", 
-					filename: "error.log", 
-					level: "error" 
+				// Console → colored
+				new winston.transports.Console({
+					format: winston.format.combine(
+						winston.format.timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
+						winston.format.colorize(),
+						colorizedDevFormat
+					),
 				}),
-				new winston.transports.File({ 
-					dirname: "logs", 
-					filename: "all.log" 
-				})
-			]
+				// File (error) → plain
+				new winston.transports.File({
+					dirname: "logs",
+					filename: "error.log",
+					level: "error",
+					format: winston.format.combine(
+						winston.format.timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
+						plainFormat
+					),
+				}),
+				// File (all) → plain
+				new winston.transports.File({
+					dirname: "logs",
+					filename: "all.log",
+					format: winston.format.combine(
+						winston.format.timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
+						plainFormat
+					),
+				}),
+			],
 		});
 		break;
 	default:
