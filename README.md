@@ -57,6 +57,10 @@ Run the script in `./script/push_shared.sh`
 
 # Release History
 
+## v2.2.0 (unreleased)
+- Harden parseEnvVariable
+
+
 ## v2.1.0
 - Update libs for 2025
 - Update linting
