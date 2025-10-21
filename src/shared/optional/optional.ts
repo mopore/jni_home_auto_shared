@@ -67,7 +67,7 @@ export class Some<T> extends Option<T> {
 
 	unwrapExpect(_errMessage: string): T {
 		if (this.isNone()){
-			const errMessageOut = `Unwrap failed: ${_errMessage}`;
+			const errMessageOut = `Unwrap failed, expected: ${_errMessage}`;
 			log.error(errMessageOut);
 			log.trace();
 			throw new Error(errMessageOut);
