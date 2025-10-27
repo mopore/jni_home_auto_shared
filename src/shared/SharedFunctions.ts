@@ -41,3 +41,49 @@ export const managedCallAsync = async <T>(
 	log.trace();
 	throw new Error(errorMessage);
 }
+
+/** Run mapper on items from an AsyncIterable with a hard concurrency cap.
+ *  Collects and returns a flattened array of results.
+ */
+export async function mapConcurrentAsync<T, U>(
+	source: AsyncIterable<T>,
+	mapper: (item: T) => Promise<U[]>, // mapper may return 0..n results (like your checkPath)
+	concurrency: number
+): Promise<U[]> {
+	const inFlight = new Set<Promise<void>>();
+	const out: U[] = [];
+	let firstError: unknown;
+
+	const schedule: (item: T) => Promise<void> = async (item: T) => {
+		try {
+			const results = await mapper(item);
+			if (Array.isArray(results)){
+				out.push(...results);
+			}
+		} catch (e) {
+			if (firstError !== undefined){
+				firstError = e;
+			}
+		}
+	};
+
+	// Request new input from source respecting the concurrency cap
+	for await (const item of source) {
+		const p = schedule(item).finally(() => inFlight.delete(p));
+		inFlight.add(p);
+
+		if (inFlight.size >= concurrency) {
+			// Wait until at least one finishes
+			await Promise.race(inFlight);
+			if (firstError !== undefined) break; // fast-fail if desired
+		}
+	}
+
+	// Drain remaining work
+	await Promise.allSettled(inFlight);
+	if (firstError !== undefined) {
+		throw firstError as Error;
+	}
+
+	return out;
+}
