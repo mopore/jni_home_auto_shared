@@ -20,7 +20,7 @@ echo "Pushing shared types and classes to repos..."
 repos=( \
 	"jni_home_auto_control_halo"\
 	"jni_home_auto_control_home_events"\
-	"jni_home_auto_control_telegram_bot"\
+	"jni_home_auto_control_matrix_bot"\
 	"jni_home_auto_monitor_iphone"\
 	"jni_home_auto_monitor_services"\
 	"jni_home_auto_control_aws_polly"\
