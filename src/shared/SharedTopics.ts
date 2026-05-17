@@ -1,5 +1,5 @@
 export const sharedTopics = {
-	TELEGRAM_SEND : "jniHome/services/telegramBot/send" as const,
+	MATRIX_SEND : "jniHome/services/matrixBot/send" as const,
 	BRIEFING_ALERT: "jniHome/services/briefing/alert" as const,
 	HALO_SYSTEM_COMMAND: "jniHome/services/halo/command" as const,
 	HALO_USER_COMMAND: "jniHome/services/halo/commandUser" as const,

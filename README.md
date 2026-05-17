@@ -23,9 +23,9 @@ Automated code provisioning by avoid a public npm project.
 
 # Dependencies
 
-## Telegram Service
-To use `shared/telegram/TelegramMessenger` the control Telegram service must be running and provide
-the MQTT topic `jniHome/services/telegramBot/send`.
+## Matrix Bot Service
+To use `shared/matrix/MatrixMessenger` the control Matrix Bot service must be running and provide
+the MQTT topic `jniHome/services/matrixBot/send`.
 
 ## Alert Messages
 To be able to send alerts the contol Home Briefing service must run and provide a topic
@@ -57,8 +57,10 @@ Run the script in `./script/push_shared.sh`
 
 # Release History
 
-## v2.2.0 (unreleased)
+## v3.0.0
+- Migrate "shared" to Matrix and Improve CI/CD #3
 - Harden parseEnvVariable
+- Migrate from Telegram to Matrix: rename shared/telegram/ to shared/matrix/, TelegramMessenger to MatrixMessenger, update MQTT topics
 
 
 ## v2.1.0
@@ -68,7 +70,7 @@ Run the script in `./script/push_shared.sh`
 
 ## v2.0.0
 - Rename "Hue Bridge" to "Halo" #48
-- Provice reset strategies for Alive ticker and Telegram MQTT messenger.
+- Provice reset strategies for Alive ticker and Matrix MQTT messenger.
 - Wait up to 20 minutes for MQTT connection on init.
 - Refactor and document initFrame method.
 - Enhance error handling on exit and reset.
@@ -112,7 +114,7 @@ Run the script in `./script/push_shared.sh`
 - Removed deprecated 'monitor neo sensors' project.
 
 ## v1.2.0
-- Add CommandRegistrar to periodically register available commands to Telegram bot.
+- Add CommandRegistrar to periodically register available commands to Matrix bot.
 - Set maximum for listeners via MQTT Server connection.
 
 ## v1.1.0

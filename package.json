@@ -1,6 +1,6 @@
 {
   "name": "jni_home_auto_shared",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "Shared types and classes for JNI Home Automation.",
   "main": "App.ts",
   "type": "module",

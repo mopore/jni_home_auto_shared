@@ -5,7 +5,7 @@ import { CommandRegistration } from "../SharedTypes.js";
 
 const ONE_SECOND_IN_MILLIS = 1000;
 const REGISTER_COMMANDS_EVERY_SECS = 60;
-const REGISTER_COMMANDS_TOPIC_NAME = "jniHome/services/telegramBot/registerCommands";
+const REGISTER_COMMANDS_TOPIC_NAME = "jniHome/services/matrixBot/registerCommands";
 
 export class CommandRegistrar {
 
