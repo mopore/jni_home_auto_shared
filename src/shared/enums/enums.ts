@@ -11,7 +11,7 @@ export const enums = {
 		value: string
 	): E[keyof E] => {
 		const enumValues = Object.values(enumObj);
-		if (enumValues.includes(value as unknown as E[keyof E])) {
+		if (enumValues.includes(value)) {
 			return value as unknown as E[keyof E];
 		}
 		const errMsg = `Could not convert "${value}" to enum value`;
@@ -34,9 +34,9 @@ export const enums = {
 		const valuesA = Object.values(enumObjA);
 		const valuesB = Object.values(enumObjB);
 
-		if (valuesA.includes(value as unknown as A[keyof A])) {
+		if (valuesA.includes(value)) {
 			return value as unknown as A[keyof A];
-		} else if (valuesB.includes(value as unknown as B[keyof B])) {
+		} else if (valuesB.includes(value)) {
 			return value as unknown as B[keyof B];
 		}
 
