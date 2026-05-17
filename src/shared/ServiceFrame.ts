@@ -135,7 +135,7 @@ export class ServiceFrame {
 	 * It throws an error if the alert could not be published.
 	 * @param subject The subject of the alert 
 	 * @param message The message of the alert 
-	 * @param urgent If true, the alert will not only queued but also sent to JNI via Telegram 
+	 * @param urgent If true, the alert will not only queued but also sent to JNI via Matrix 
 	 */
 	async alertAsync(subject: string, message: string, urgent: boolean): Promise<void> {
 		try{
