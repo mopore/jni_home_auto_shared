@@ -20,25 +20,25 @@
   "author": "jni@mopore.org",
   "license": "ISC",
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.0",
-    "@eslint/js": "^9.21.0",
-    "@types/chai": "^5.0.1",
-    "@types/chai-as-promised": "^8.0.1",
+    "@eslint/eslintrc": "^3.3.5",
+    "@eslint/js": "^10.0.1",
+    "@types/chai": "^5.2.3",
+    "@types/chai-as-promised": "^8.0.2",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^22.13.5",
-    "@typescript-eslint/eslint-plugin": "^8.24.1",
-    "@typescript-eslint/parser": "^8.24.1",
-    "chai": "^5.2.0",
-    "chai-as-promised": "^8.0.1",
-    "eslint": "^9.21.0",
-    "mocha": "^11.1.0",
-    "neo4j-driver": "^5.28.1",
-    "testcontainers": "^10.18.0",
-    "typescript": "^5.7.3"
+    "@types/node": "^25.9.1",
+    "@typescript-eslint/eslint-plugin": "^8.59.4",
+    "@typescript-eslint/parser": "^8.59.4",
+    "chai": "^6.2.2",
+    "chai-as-promised": "^8.0.2",
+    "eslint": "^10.4.0",
+    "mocha": "^11.7.6",
+    "neo4j-driver": "^6.0.1",
+    "testcontainers": "^12.0.0",
+    "typescript": "^6.0.3"
   },
   "dependencies": {
-    "dotenv": "^16.4.7",
-    "mqtt": "^5.10.3",
-    "winston": "^3.17.0"
+    "dotenv": "^17.4.2",
+    "mqtt": "^5.15.1",
+    "winston": "^3.19.0"
   }
 }

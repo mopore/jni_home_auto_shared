@@ -13,6 +13,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,  
     "skipLibCheck": true, // This should improve preformance.
+    "types": ["mocha", "node"],
     "noImplicitOverride": true,
   },
   "include": [

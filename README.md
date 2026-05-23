@@ -58,6 +58,7 @@ Run the script in `./script/push_shared.sh`
 # Release History
 
 ## v3.0.0
+- Upgrade to newest libs (e.g. TS 6)
 - Migrate "shared" to Matrix and Improve CI/CD #3
 - Harden parseEnvVariable
 - Migrate from Telegram to Matrix: rename shared/telegram/ to shared/matrix/, TelegramMessenger to MatrixMessenger, update MQTT topics
