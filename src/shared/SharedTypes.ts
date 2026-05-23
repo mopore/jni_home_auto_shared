@@ -21,6 +21,13 @@ export type CommandRegistration = {
 	commandAlternatives: string[] | undefined,
 	extendable: boolean,
 	description: string,
+	callbackTopic: string,
+}
+
+export type CommandCallback = {
+	command: string,
+	source: string,
+	timestamp: string,
 }
 
 export enum ActionSource {
