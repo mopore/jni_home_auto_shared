@@ -149,7 +149,7 @@ export class MqttServerConnection {
 			const errorMessage = `Error publishing: ${error}`;
 			log.error(errorMessage);
 			log.trace();
-			throw new Error(errorMessage);
+			throw new Error(errorMessage, { cause: error });
 		}
 	}
 
@@ -183,7 +183,7 @@ export class MqttServerConnection {
 			log.error(errorMessage);
 			log.trace();
 			if (!this._exitRequested){
-				throw new Error(errorMessage);
+				throw new Error(errorMessage, { cause: error });
 			}
 		}
 	}

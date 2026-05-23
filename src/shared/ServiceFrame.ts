@@ -38,7 +38,7 @@ export class ServiceFrame {
 		catch (error) {
 			const errMessage = `Could not establish essential connection to MQTT server: ${error}`;
 			log.error(errMessage);
-			throw new Error(errMessage);
+			throw new Error(errMessage, { cause: error });
 		}
 
 		if (this._resetReason){
@@ -152,7 +152,7 @@ export class ServiceFrame {
 			const errMessage = `Error publishing alert for subject "${subject}": ${error}`;
 			log.error(errMessage);
 			log.trace();
-			throw new Error(errMessage);
+			throw new Error(errMessage, { cause: error });
 		}
 	}
 
@@ -202,7 +202,7 @@ export class ServiceFrame {
 				const errMessage = `Could not alert reset reason for service "${serviceName}": ${error}`
 				log.error(errMessage);
 				log.trace();
-				throw new Error(errMessage);
+				throw new Error(errMessage, { cause: error });
 			}
 		}
 		asyncFunc().catch(error => {

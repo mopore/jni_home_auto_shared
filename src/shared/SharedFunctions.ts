@@ -14,7 +14,7 @@ export function parseEnvVariable(envName: string): string{
 		const errorMessage = `Could not parse environment variable "${envName}": ${error}`;
 		console.error(errorMessage);
 		console.trace();
-		throw new Error(errorMessage);
+		throw new Error(errorMessage, { cause: error });
 	}
 }
 
